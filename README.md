@@ -1,22 +1,60 @@
 # Convolutional Neural Network Image Classification: Emotions, Race, Gender
 
 # Project Overview
-For my final project, I took a deeper dive into Convolutional Neural Networks (CNN).  Using Keras, TensorFlow GPU and cuDNN, I trained a CNN to take an image and have it classify what emotion the person in the image was expressing.  I then trained additional CNNs to classify the race and gender of the person in the image.
+For my final project, I took a deeper dive into Convolutional Neural Networks (CNN).  Using Keras, TensorFlow GPU and cuDNN, I trained a CNN to take an image and have it classify what emotion the person in the image was expressing.  I then trained additional CNNs to classify the race and gender of the person in the image.  Here are a few examples of my results:
 
 <img width="1056" alt="predictions" src="https://user-images.githubusercontent.com/30739929/60197625-b890b980-980d-11e9-8c04-b62657b4fda5.png">
 
 
-dataset:  Fer2013 Dataset consisted of 35,000 images of 
-
-**Programming Language**
+**Data Stack**
 * Python
-
-**What Did You Use**
 * Keras
 * TensorFlow GPU
 * cuDNN
-
 * Numpy
 * Seaborn
 * Pandas
+
+# Training Data/EDA
+The **fer2013 dataset**, which consisted of 35,000 images with 7 different classes, was used to train the emotion CNN.  The 7 different emotions classified were Angry, Disgust, Fear, Happy, Sad, Surprise and Neutral. The images were 48x48 in size.  
+<p align="center">
+<img width="703" alt="fer2013_train" src="https://user-images.githubusercontent.com/30739929/60436975-44725f00-9bdb-11e9-9aae-38a6681df8d0.png"></p>
+
+There was a class imbalance with Happy images which contained over 7000 images.  Disgust images had less than 1000 images.  The distribution of the rest of the emotions were fairly balanced at around 3000 to 4000 images.
+
+<p align="center">
+<img alt="Training Data Distribution" src="https://user-images.githubusercontent.com/30739929/60437508-8354e480-9bdc-11e9-9ab1-838c839f710f.png">
+</p>
+
+The **Wilma Bainbridge 10k Faces dataset** was used to classify race and gender.  Gender was classified as male or female.  Race was classified as Other, Caucasian, Black, East Asian, South Asian, Hispanic, and Middle Eastern.
+<p align="center">
+<img width="915" alt="wm" src="https://user-images.githubusercontent.com/30739929/60437877-489f7c00-9bdd-11e9-8015-b7ffd1f8edf8.png"></p>
+
+## Data Augmentation
+Data Augmentation was used to flip, shear and rotate images.  This gives the CNN more data to train on and gives it more possible real world scenarios for feature extraction.
+<p align="center">
+<img width="763" alt="data_augmentation" src="https://user-images.githubusercontent.com/30739929/60438231-38d46780-9bde-11e9-94c6-4ce803529915.png"></p>
+
+## Visiualizing Different Layers in the CNN
+Keras was used to visualize different layers in the CNN.  
+<p align="center">
+  <img width="627" alt="layers" src="https://user-images.githubusercontent.com/30739929/60438907-bba9f200-9bdf-11e9-8a01-549056c47cb0.png"></p>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/30739929/60439071-13485d80-9be0-11e9-8d01-2c8a52b4a455.png"></p>
+  
+# Models
+Validation Accuracy was used as a metric to see how well the CNN performed.  After experimenting with  different types of layers in different orders, the final model consisted of:
+
+![66model](https://user-images.githubusercontent.com/30739929/60440101-10e70300-9be2-11e9-8422-b18bd12e4dc9.png)
+
+![66plot](https://user-images.githubusercontent.com/30739929/60440102-10e70300-9be2-11e9-8b80-11f57019de55.png)
+![66loss](https://user-images.githubusercontent.com/30739929/60440100-10e70300-9be2-11e9-972f-42acb944f784.png)
+
+
+# Transfer Learning
+
+![xcep_acc](https://user-images.githubusercontent.com/30739929/60440135-26f4c380-9be2-11e9-9665-9519b56ec1f2.png)
+![xcep_loss](https://user-images.githubusercontent.com/30739929/60440136-26f4c380-9be2-11e9-95cf-934f283e225c.png)
+
+# Results
 
